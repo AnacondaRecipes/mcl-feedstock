@@ -23,8 +23,9 @@ requirements:
     - cmake
     - make                                                  # [unix]
     - ninja                                                 # [win]
+    
   host:
-    - gmp
+    - gmp                                                   # [unix]
 
 test:
   commands:
