@@ -2,13 +2,9 @@ mkdir build
 cd build
 if %ERRORLEVEL% neq 0 exit 1
 
-cmake -GNinja ^
-    -DCMAKE_INSTALL_PREFIX=%LIBRARY_PREFIX%  ^ 
-    ..
-if %ERRORLEVEL% neq 0 exit 1
 
-cmake --build .
-if %ERRORLEVEL% neq 0 exit 1
+cmake -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
+    .. -A x64
+msbuild mcl.sln /p:Configuration=Release /m
 
-cmake --build . --target install
 if %ERRORLEVEL% neq 0 exit 1
