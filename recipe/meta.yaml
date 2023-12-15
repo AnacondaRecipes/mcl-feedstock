@@ -6,9 +6,11 @@ package:
   version: {{ version }}
 
 source:
-
   url: https://github.com/herumi/{{ name}}/archive/refs/tags/v{{ version }}.tar.gz
   sha256: a3ab1cd01a6419f46210fd5874e795e37a4565fa305e0302301b31ffed208872
+  patches:
+    - patches/0001-Don-t-install-static-library.patch
+    - patches/0002-Move-Windows-shared-library-in-bin.patch
 
 build:
   skip: True  # [s390x]
@@ -18,14 +20,14 @@ requirements:
   build:
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
-    - clang                                                 # [linux and aarch64]
-    - clangxx                                               # [linux and aarch64]
+    - clang    # [linux and aarch64]
+    - clangxx  # [linux and aarch64]
     - cmake
-    - make                                                  # [unix]
-    - ninja                                                 # [win]
-    
+    - make  # [unix]
+    - patch  # [not win]
+    - m2-patch  # [win]
   host:
-    - gmp                                                   # [unix]
+    - gmp  # [unix]
 
 test:
   commands:

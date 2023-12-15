@@ -1,0 +1,25 @@
+From 3181e448f9c8fb497fac0e35cf613ca43a937510 Mon Sep 17 00:00:00 2001
+From: Jean-Christophe Morin <jcmorin@anaconda.com>
+Date: Fri, 15 Dec 2023 18:09:15 -0500
+Subject: [PATCH] Move Windows shared library in bin
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index a0b85eee..c4f5dc76 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -247,7 +247,7 @@ install(TARGETS mcl mclbn256 mclbn384 mclbn384_256
+ 	EXPORT mclTargets
+ 	LIBRARY DESTINATION lib
+ 	ARCHIVE DESTINATION lib
+-	RUNTIME DESTINATION lib)
++	RUNTIME DESTINATION $<IF:$<BOOL:${MSVC}>,bin,lib>)
+ 
+ install(DIRECTORY include/mcl
+ 	DESTINATION include
+-- 
+2.43.0
+

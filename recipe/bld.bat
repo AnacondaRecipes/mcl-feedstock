@@ -1,10 +1,8 @@
-mkdir build
-cd build
+cmake . -B build -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles"
 if %ERRORLEVEL% neq 0 exit 1
 
+cmake --build build
+if %ERRORLEVEL% neq 0 exit 1
 
-cmake -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
-    .. -A x64
-msbuild mcl.sln /p:Configuration=Release /m
-
+cmake --install build
 if %ERRORLEVEL% neq 0 exit 1
