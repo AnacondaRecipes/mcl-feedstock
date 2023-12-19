@@ -1,19 +1,8 @@
-mkdir build
-cd build
+cmake . -B build -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" -DCMAKE_INSTALL_PREFIX="%LIBRARY_PREFIX%" -DCMAKE_BUILD_TYPE=Release -G "NMake Makefiles"
 if %ERRORLEVEL% neq 0 exit 1
 
-cmake -GNinja ^
-    -DCMAKE_PREFIX_PATH="%LIBRARY_PREFIX%" ^
-    -DMCL_STATIC_LIB=OFF ^
-    ..
-
+cmake --build build
 if %ERRORLEVEL% neq 0 exit 1
 
-ninja -v -w dupbuild=warn
-:: cmake --build . -- -w dupbuild=warn
-if %ERRORLEVEL% neq 0 exit 1
-
-
-ninja -v -w dupbuild=warn install
-:: cmake --build . -- -w dupbuild=warn --target install
+cmake --install build
 if %ERRORLEVEL% neq 0 exit 1
