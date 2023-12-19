@@ -40,15 +40,15 @@ test:
     - test -f $PREFIX/include/mcl/bn.hpp                    # [unix]
     - test -f $PREFIX/include/mcl/bn.h                      # [unix]
 
-    - if not exist %LIBRARY_LIB%\mcl${SHLIB_EXT}          exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\mclbn256${SHLIB_EXT}     exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\mclbn384${SHLIB_EXT}     exit 1  # [win]
-    - if not exist %LIBRARY_LIB%\mclbn384_256${SHLIB_EXT} exit 1  # [win]
-    - if not exist %LIBRARY_INC%\mcl\bn256.hpp   exit 1     # [win]
-    - if not exist %LIBRARY_INC%\mcl\bn_c256.h   exit 1     # [win]
-    - if not exist %LIBRARY_INC%\mcl\bn256.hpp   exit 1     # [win]
-    - if not exist %LIBRARY_INC%\mcl\bn.hpp      exit 1     # [win]
-    - if not exist %LIBRARY_INC%\mcl\bn.h        exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\mcl.dll          exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\mclbn256.dll     exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\mclbn384.dll     exit 1     # [win]
+    - if not exist %LIBRARY_BIN%\mclbn384_256.dll exit 1     # [win]
+    - if not exist %LIBRARY_INC%\mcl\bn256.hpp    exit 1     # [win]
+    - if not exist %LIBRARY_INC%\mcl\bn_c256.h    exit 1     # [win]
+    - if not exist %LIBRARY_INC%\mcl\bn256.hpp    exit 1     # [win]
+    - if not exist %LIBRARY_INC%\mcl\bn.hpp       exit 1     # [win]
+    - if not exist %LIBRARY_INC%\mcl\bn.h         exit 1     # [win]
  
 about:
   home: https://github.com/herumi/mcl/
