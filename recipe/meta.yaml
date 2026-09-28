@@ -14,10 +14,11 @@ source:
 
 build:
   skip: True  # [s390x]
-  number: 0
+  number: 1
 
 requirements:
   build:
+    - {{ stdlib('c') }}
     - {{ compiler('c') }}
     - {{ compiler('cxx') }}
     # upstream support building by gcc on x86, on other platforms - clang  
@@ -25,8 +26,6 @@ requirements:
     - clangxx  # [linux and aarch64]
     - cmake
     - make  # [unix]
-    - patch  # [not win]
-    - m2-patch  # [win]
   host:
     # pin through gmp run_exports
     - gmp  # [unix]
